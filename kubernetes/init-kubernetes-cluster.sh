@@ -12,7 +12,7 @@ kubeadm config print init-defaults --component-configs KubeProxyConfiguration  >
 # hostname must resolve ipaddress and resolve address not 127.0.0.1
 sed -i "s|1.2.3.4|${MASTER_IP}|g" ${CONFIG}
 sed -i 's|mode: ""|mode: ipvs|g' ${CONFIG}
-sed -i "/serviceSubnet:/a\  nodeSubnet: ${POD_CIDR}" $CONFIG
+sed -i "/serviceSubnet:/a\  podSubnet: ${POD_CIDR}" $CONFIG
 
 kubeadm init --config ${CONFIG}
 
